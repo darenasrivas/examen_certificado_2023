@@ -19,10 +19,12 @@ $productos = [
                ['unidades' => 2500,
                 'precio' => 2.10],
 ];
-// Genera un valor entre 1 y 100, y muestra si es par o si es impar
 
 //Aquí genero el valor
+foreach ($productos as $index => $producto){
+    $nombre = $index;
 
+}
 
 ?>
 <!doctype html>

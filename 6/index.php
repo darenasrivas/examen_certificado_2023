@@ -1,8 +1,17 @@
 <?php
-// Genera un valor entre 1 y 100, y muestra si es par o si es impar
+// Dado una página con 5 submit, como se muestra en el ejemplo, visualiza el submit que he apretado o si no he apretado ninguno indícalo
 
 //Aquí genero el valor
+$opcion = $_POST['submit'] ?? "";
 
+$msj = match($opcion){
+    "Ver"=>"Has pulsado en ver",
+    "Insertar"=>"Has pulsado en insertar",
+    "Borrar"=>"Has pulsado en borrar",
+    "Consultar"=>"Has pulsado en consultar",
+    "Editar"=>"Has pulsado en editar",
+    default=> "No has pulsado ningún botón",
+};
 
 ?>
 <!doctype html>
@@ -17,6 +26,7 @@
 <body>
 
 <a style="%;color:darkblue;size:2rem" href="./../index.php">Volver</a>
+<form action="index.php" method="post">
 <fieldset>
     <legend>Opciones</legend>
     <input type="submit" value="Ver" name="submit">
@@ -25,7 +35,8 @@
     <input type="submit" value="Consultar" name="submit">
     <input type="submit" value="Editar" name="submit">
 </fieldset>
-
+</form>
+<?= $msj ?>
 </body>
 </html>
 

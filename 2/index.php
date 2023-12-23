@@ -1,8 +1,13 @@
 <?php
 // Genera un valor entre 1 y 100, y muestra si es par o si es impar
-
 //Aquí genero el valor
+$valor = rand(1,100);
 
+if($valor%2 == 0){
+    $msj = "El valor de $valor es par";
+}else{
+    $msj = "El valor de $valor es impar";
+}
 
 ?>
 <!doctype html>
@@ -21,6 +26,7 @@
 
 <h1>
 <!--    Aquí lo visualizo  -->
+    <?= $msj ?>
 </h1>
 
 </body>
