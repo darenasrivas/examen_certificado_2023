@@ -1,13 +1,12 @@
 <?php
-// Genera un valor entre 1 y 100, y muestra si es par o si es impar
-
-//Aquí genero el valor
-if (isset($_POST['submit'])){
- //Lee el nombre y lleva un contador de clicks
- //   Para ello deberías de tener un array asociativo por nombre
+// Verificar si se ha pasado un nombre de usuario y un contador de clics en la URL
+if (isset($_POST["usuario"]) && isset($_POST["clics"])) {
+    $usuario = $_POST["usuario"];
+    $clics =+ $_POST["clics"];
+    $msj =  "Hola, $usuario. Has hecho $clics clic(s).";
 }
-
 ?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -20,14 +19,14 @@ if (isset($_POST['submit'])){
 <body>
 
 <a style="%;color:darkblue;size:2rem" href="./../index.php">Volver</a>
-<fieldset>
-    <legend>Datos de click</legend>
-    Nombre <input type="text" name="nombre" id=""><br />
-    <input type="submit" value="Haz click" name="submit">
 
-
-</fieldset>
-
+<form action="index.php" method="post">
+    <label for="usuario">Identifícate:</label>
+    <input type="text" id="usuario" name="usuario" required>
+    <input type="hidden" id="clics" name="clics" value="1">
+    <button type="submit">Iniciar sesión</button>
+</form>
+<?= $msj ?>
 </body>
 </html>
 

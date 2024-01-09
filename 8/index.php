@@ -2,6 +2,7 @@
 // Dado el array de la tienda que se facilita en el ejercicio,
 // muestra el nombre de todos los productos de los que haya más de 2000 unidades y cuesten más de 2,10 euros
 //de cada uno muestra el nombre del producto, sus unidades y su precio
+
 $productos = [
     'lechuga' =>
                 ['unidades' => 200,
@@ -20,13 +21,16 @@ $productos = [
                 'precio' => 2.10],
 ];
 
-//Aquí genero el valor
-foreach ($productos as $index => $producto){
-    $nombre = $index;
-
+if (isset($_POST['ver'])) {
+    foreach ($productos as $nombre => $detalles) {
+        if ($detalles['unidades'] > 1999 && $detalles['precio'] > 2.10) {
+            echo "Nombre del producto: $nombre, Unidades: {$detalles['unidades']}, Precio: {$detalles['precio']} euros<br>";
+        }
+    }
 }
-
 ?>
+
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -41,13 +45,12 @@ foreach ($productos as $index => $producto){
 <a style="%;color:darkblue;size:2rem" href="./../index.php">Volver</a>
 <fieldset>
     <legend>Opciones</legend>
-    <input type="submit" value="Ver" name="submit">
+    <form action="index.php" method="post">
+    <input type="submit" value="Ver" name="ver">
     <input type="submit" value="Insertar" name="submit">
     <input type="submit" value="Borrar" name="submit">
     <input type="submit" value="Consultar" name="submit">
     <input type="submit" value="Editar" name="submit">
 </fieldset>
-
 </body>
 </html>
-

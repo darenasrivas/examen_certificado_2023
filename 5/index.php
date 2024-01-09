@@ -2,6 +2,10 @@
 // 5. Haz una calculadora sencilla en php. Debemos tener 2 operadores y un resultado.
 //Al apretar operar me devolverá el resultado
 
+//Importamos las funciones
+
+include "funciones.php";
+
 //Aquí genero el valor
 
 if(isset($_POST['submit'])){
@@ -9,58 +13,21 @@ if(isset($_POST['submit'])){
     $op2 = ($_POST['op2']);
     $operacion = ($_POST['operador']);
     switch ($operacion){
-        case "+";
+        case "+":
             $resultado = sumar($op1, $op2);
             break;
-        case "-";
+        case "-":
             $resultado = restar($op1, $op2);
             break;
-        case "*";
+        case "*":
             $resultado = multiplicar($op1, $op2);
             break;
-        case "/";
+        case "/":
             $resultado = dividir($op1, $op2);
             break;
     }
 }
 
-function sumar(string|null $op1, string|null $op2):int|string{
-    //Si es númerico, es decir, is_numeric
-    if((is_numeric($op1)) && (is_numeric($op2))) {
-        return $op1 + $op2;
-    }else{
-        return "$op1 + $op2 no se puede hacer";
-    }
-}
-
-function restar(string|null $op1, string|null $op2):int|string{
-    //Si es númerico, es decir, is_numeric
-    if((is_numeric($op1)) && (is_numeric($op2))) {
-        return $op1 - $op2;
-    }else{
-        return "$op1 - $op2 no se puede hacer";
-    }
-}
-
-function multiplicar(string|null $op1, string|null $op2):int|string{
-    //Si es númerico, es decir, is_numeric
-    if((is_numeric($op1)) && (is_numeric($op2))) {
-        return $op1 * $op2;
-    }else{
-        return "$op1 * $op2 no se puede hacer";
-    }
-}
-
-function dividir(string|null $op1, string|null $op2):int|string{
-    //Si es númerico, es decir, is_numeric
-    if((is_numeric($op1)) && (is_numeric($op2))) {
-        if($op2 != 0)
-            return $op1 / $op2;
-    }else{
-        return "$op1 / $op2 no se puede hacer";
-    }
-    return "$op1 no se puede dividir por 0";
-}
 
 ?>
 <!doctype html>
@@ -88,12 +55,12 @@ function dividir(string|null $op1, string|null $op2):int|string{
         <option value="/">/</option>
     </select>
     <input type="text" name="op2" id="" placeholder="Operador 2">
-    <input type="submit" value="submit">
+    <input type="submit" value="submit" name="submit">
 </fieldset>
 </form>
 <h1>
 <!--    Aquí el resultado -->
-    <?= $resultado ?>
+    <?= "El resultado de la operación es: $resultado" ?>
 </h1>
 
 </body>
